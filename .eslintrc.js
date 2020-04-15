@@ -1,7 +1,8 @@
 module.exports = {
 	"env": {
 		"browser": true,
-		"es6": true
+		"es6": true,
+        "node": true
 	},
 	"extends": [
 		"eslint:recommended",
@@ -34,6 +35,7 @@ module.exports = {
         "prefer-const": "error",
 		"prefer-spread": "error",
         "func-call-spacing": [ "error", "never" ],
-		"no-loop-func": "error"
+		"no-loop-func": "error",
+        "no-undef": "error"
 	}
 };
