@@ -1,9 +1,10 @@
 
 // deps
-import React, { useContext } from "react";
+import React, { useState } from "react";
 
 // app
 import { UI } from "./services";
+import { Panel } from "../index";
 
 //
 // Pantry / Views / App / App
@@ -11,11 +12,20 @@ import { UI } from "./services";
 
 
 export default function Router () {
-	const { openPanel, closePanel } = useContext( UI );
+	const [ ui, setUI ] = useState({
+		panel: {},
+		openPanel: payload => setUI( ui => ({ ...ui, panel: payload })),
+		closePanel: () => setUI( ui => ({ ...ui, panel: {}})),
+		notifications: [{}],
+		addNotification: () => {},
+	});
+
 	return (
-		<div className="App">
-			<button onClick={ () => openPanel({ panel: "test", props: { id: "123" }}) }>Open</button>
-			<button onClick={ () => closePanel() }>Close</button>
-		</div>
+		<>
+			<UI.Provider value={ ui }>
+				<Panel />
+				<button onClick={ () => ui.openPanel({ panel: "test", props: { id: "123" }}) }>Open</button>
+			</UI.Provider>
+		</>
 	);
 }

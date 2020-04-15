@@ -4,7 +4,6 @@ import { App } from "./views";
 import * as serviceWorker from "./serviceWorker";
 import firebase from "firebase/app";
 
-
 const firebaseConfig = {
 	apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
 	authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
@@ -16,7 +15,6 @@ const firebaseConfig = {
 	measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID,
 };
 firebase.initializeApp( firebaseConfig );
-
 
 const rootElement = document.getElementById( "root" );
 if ( rootElement.hasChildNodes()) {
