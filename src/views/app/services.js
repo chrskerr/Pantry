@@ -9,6 +9,7 @@ import { createContext } from "react";
 
 export const Auth = createContext({
 	authUser: {},
+	token: "",
 	isAuthenticating: false,
 	isAuthenticated: false,
 	isAdmin: false,

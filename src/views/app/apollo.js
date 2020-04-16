@@ -14,12 +14,12 @@ import { Auth } from "./services";
 
 
 export default function Apollo ({ children }) {
-	const { authUser, isAuthenticated } = useContext( Auth );
+	const { token, isAuthenticated } = useContext( Auth );
 
 	const client = new ApolloClient({
 		uri: "https://pantry-hasura-service.herokuapp.com/v1/graphql",
 		headers: isAuthenticated 
-			? { Authorization: `Bearer ${ authUser.token }` } 
+			? { Authorization: `Bearer ${ token }` } 
 			: {},
 	});
 
@@ -27,19 +27,6 @@ export default function Apollo ({ children }) {
 	// const [ formData, setFormData ] = useState({});
 	// const [ loginError, setLoginError ] = useState();
 	// const [ loading, setLoading ] = useState( false );
-
-	// useEffect(() => {
-	// 	return firebase.auth().onAuthStateChanged( async user => {
-	// 		if ( user ) {
-	// 			const token = await user.getIdToken();
-	// 			const idTokenResult = await user.getIdTokenResult();
-	// 			const hasuraClaim = idTokenResult.claims[ "https://hasura.io/jwt/claims" ];
-	// 			if ( hasuraClaim ) setAuthState({ user, token });
-	// 		} else {
-	// 			setAuthState( false );
-	// 		}
-	// 	});
-	// }, []);
 
 	// const handleLogin = async e => {
 	// 	e.preventDefault();

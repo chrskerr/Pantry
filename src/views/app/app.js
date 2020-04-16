@@ -1,9 +1,9 @@
 
 // deps
-import React, { useState } from "react";
+import React from "react";
 
 // app
-import { Auth } from "./services";
+import FirebaseProvider from "./firebase";
 import Router from "./router";
 import ApolloProvider from "./apollo";
 
@@ -13,21 +13,13 @@ import ApolloProvider from "./apollo";
 
 
 export default function App () {
-	const [ auth, setAuth ] = useState({
-		authUser: {},
-		isAuthenticating: false,
-		isAuthenticated: false,
-		isAdmin: false,
-		updateAuth: payload => setAuth( auth => ({ ...auth, ...payload })),
-	});
-
 	return (
 		<div className="App">
-			<Auth.Provider value={ auth }>
+			<FirebaseProvider>
 				<ApolloProvider>
 					<Router />
 				</ApolloProvider>
-			</Auth.Provider>
+			</FirebaseProvider>
 		</div>
 	);
 }
